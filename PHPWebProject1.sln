@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "PHPWebProject1", "PHPWebProject1.phpproj", "{D3D38C19-81BC-408F-BE1E-9DF005B08620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3D38C19-81BC-408F-BE1E-9DF005B08620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D38C19-81BC-408F-BE1E-9DF005B08620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6A8BFD5-76C5-40D3-8A80-1E99EB9BCFAF}
+	EndGlobalSection
+EndGlobal

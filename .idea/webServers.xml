@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="aec51452-203e-4156-91c1-bb592f0044c1" name="scool" url="http://ltmesloboziamare.com">
+        <fileTransfer host="ftp.ltmesloboziamare.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="21537298-9d6a-4380-aef0-69313e1e3db3" name="local" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\Users\Costy\PhpstormProjects" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
