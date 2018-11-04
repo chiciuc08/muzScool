@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -27,50 +28,86 @@ AppAsset::register($this);
    <?php $this->beginBody() ?>
     
 <div class="wrap">
+    
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><?= Html::a('Activitati', ['/noutati/index'], ['class' => ''])?></li>
+      <li class="active"><?= Html::a('Istoric', ['/site/about'], ['class' => ''])?></li>
+      <li class="active"><?= Html::a('Galerie', ['/site/galerie'], ['class' => ''])?></li>
+      <li class="active"><?= Html::a('Video', ['/site/video'], ['class' => ''])?></li>
+      <li class="active"><?= Html::a('Contact', ['/site/contact'], ['class' => ''])?></li>
+      <li class="active"><?php if (!Yii::$app->user->isGuest){echo Html::a('Note', ['/nota/index'], ['class' => '']);}?></li>
+      <li class="active"><?php if (!Yii::$app->user->isGuest){echo  Html::a('Orar', ['/ora/index'], ['class' => '']);}?></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <?php 
+        if (Yii::$app->user->isGuest) {?>
+            <li><?= Html::a('<span class="glyphicon glyphicon-user"></span> Sign Up', ['/site/signup'], ['class' => ''])?></li>
+            <li><?= Html::a('<span class="glyphicon glyphicon-log-in"></span> Login', ['/site/login'], ['class' => ''])?></li>
+         <?php           
+        }else{?>
+            <li>
+               <?php echo Html::beginForm(['/site/logout'], 'post').
+                    '<button type="submit" class="btn btn-link logout">Iesi&nbsp;'.Yii::$app->user->identity->username.'</button>'
+                       .Html::endForm()?>
+                       
+            </li>
+            <?php
+           }
+      ?>
+      
+    </ul>
+  </div>
+</nav>
     <?php
-    NavBar::begin([
-        'brandLabel' => "",
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Activitati', 'url' => ['/noutati/index']],
-        ['label' => 'Istoric', 'url' => ['/site/about']],
-        ['label' => 'Galerie', 'url' => ['/site/galerie']],
-        ['label' => 'Video', 'url' => ['/site/video']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],        
-        ['label' => 'Despre Noi', 'url' => ['/site/about']],
-        
-    ];
-    
-    
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup'], 'class' =>'pull-right'];
-        $menuItems[] = ['label' => 'Logare', 'url' => ['/site/login'], 'class' =>'pull-right'];
-    } else {
-        array_push($menuItems, ['label'=>'Note', 'url' =>['/nota/index']]);
-        array_push($menuItems, ['label'=>'Orar', 'url' =>['/ora/index']]);
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Iesi (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'nav navbar-nav '],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
+//    NavBar::begin([
+//        'brandLabel' => "",
+//        'brandUrl' => Yii::$app->homeUrl,
+//        'options' => [
+//            'class' => 'navbar-inverse navbar-fixed-top',
+//        ],
+//    ]);
+//    $menuItems = [
+//        ['label' => 'Activitati', 'url' => ['/noutati/index']],
+//        ['label' => 'Istoric', 'url' => ['/site/about']],
+//        ['label' => 'Galerie', 'url' => ['/site/galerie']],
+//        ['label' => 'Video', 'url' => ['/site/video']],
+//        ['label' => 'Contact', 'url' => ['/site/contact']],        
+//        ['label' => 'Despre Noi', 'url' => ['/site/about']],
+//        
+//    ];
+//    
+//    
+//    if (Yii::$app->user->isGuest) {
+//        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup'], 'class' =>'pull-right'];
+//        $menuItems[] = ['label' => 'Logare', 'url' => ['/site/login'], 'class' =>'pull-right'];
+//    } else {
+//        array_push($menuItems, ['label'=>'Note', 'url' =>['/nota/index']]);
+//        array_push($menuItems, ['label'=>'Orar', 'url' =>['/ora/index']]);
+//        $menuItems[] = '<li>'
+//            . Html::beginForm(['/site/logout'], 'post')
+//            . Html::submitButton(
+//                'Iesi (' . Yii::$app->user->identity->username . ')',
+//                ['class' => 'btn btn-link logout']
+//            )
+//            . Html::endForm()
+//            . '</li>';
+//    }
+//    echo Nav::widget([
+//        'options' => ['class' => 'nav navbar-nav navbar-center'],
+//        'items' => $menuItems,
+//    ]);
+//    NavBar::end();
     ?>
-
+    
     
     <div class="container">
-        <img src="/layouts/dreamstime.jpg" width="100%"/>
+        <img src="img/dreamstime.jpg" />
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
