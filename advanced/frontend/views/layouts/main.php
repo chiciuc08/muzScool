@@ -4,9 +4,6 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -63,48 +60,7 @@ AppAsset::register($this);
       
     </ul>
   </div>
-</nav>
-    <?php
-//    NavBar::begin([
-//        'brandLabel' => "",
-//        'brandUrl' => Yii::$app->homeUrl,
-//        'options' => [
-//            'class' => 'navbar-inverse navbar-fixed-top',
-//        ],
-//    ]);
-//    $menuItems = [
-//        ['label' => 'Activitati', 'url' => ['/noutati/index']],
-//        ['label' => 'Istoric', 'url' => ['/site/about']],
-//        ['label' => 'Galerie', 'url' => ['/site/galerie']],
-//        ['label' => 'Video', 'url' => ['/site/video']],
-//        ['label' => 'Contact', 'url' => ['/site/contact']],        
-//        ['label' => 'Despre Noi', 'url' => ['/site/about']],
-//        
-//    ];
-//    
-//    
-//    if (Yii::$app->user->isGuest) {
-//        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup'], 'class' =>'pull-right'];
-//        $menuItems[] = ['label' => 'Logare', 'url' => ['/site/login'], 'class' =>'pull-right'];
-//    } else {
-//        array_push($menuItems, ['label'=>'Note', 'url' =>['/nota/index']]);
-//        array_push($menuItems, ['label'=>'Orar', 'url' =>['/ora/index']]);
-//        $menuItems[] = '<li>'
-//            . Html::beginForm(['/site/logout'], 'post')
-//            . Html::submitButton(
-//                'Iesi (' . Yii::$app->user->identity->username . ')',
-//                ['class' => 'btn btn-link logout']
-//            )
-//            . Html::endForm()
-//            . '</li>';
-//    }
-//    echo Nav::widget([
-//        'options' => ['class' => 'nav navbar-nav navbar-center'],
-//        'items' => $menuItems,
-//    ]);
-//    NavBar::end();
-    ?>
-    
+</nav>    
     
     <div class="container">
         <img src="img/dreamstime.jpg" />
