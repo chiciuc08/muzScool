@@ -63,12 +63,11 @@ AppAsset::register($this);
 </nav>    
     
     <div class="container">
-        <img src="img/dreamstime.jpg" />
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+        <div class="well well-lg">
+        <!--<img src="http://safiisanatos.ro/wp-content/uploads/2014/05/baroc.jpg" />-->
+      
         <?= $content ?>
+        </div>
     </div>
 </div>
 
