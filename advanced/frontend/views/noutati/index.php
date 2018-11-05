@@ -9,29 +9,32 @@ $this->title = 'Activitati';
 
 ?>
 <div class="row">
-    <div class="container"style="background-color: azure">
-
-        <div class="well well-sm"><h2 class="text-center "><?= Html::encode($this->title) ?></h2></div>
- <?php 
- if (!Yii::$app->user->isGuest&& Yii::$app->user->can('createPost')) {
-     echo Html::a('Activitate Noua', ['create'], ['class' => 'btn btn-success']);
- }
- ?>
+   
+    
+    <div class="col-md-1">
+        <?php 
+        if (!Yii::$app->user->isGuest&& Yii::$app->user->can('createPost')) {
+            echo Html::a('Nou <span class="glyphicon glyphicon-plus"></span>', ['create'], ['class' => 'btn btn-lg btn-success']);
+        }
+        ?>
+    </div>
+<div class="col-md-10"><h2 class=" text-center"> <?= Html::encode($this->title) ?></h2></div>
+    <div class="col-md-1"></div>
        
-        </p
-        <div class="container">
+        <div class="col-md-12">
             <?php foreach ($noutati as $articol) {?>
-                <div class="row">
-                    <div class="panel"> <h2 class="text-center"><?=$articol->noutati_titlu?></h2>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h4><?=$articol->noutati_titlu?></h4></div>
                         <div class="panel-body"><?=$articol->noutati_text?></div>
-                        <div class = "text-right"><?php echo Html::a("Detalii", ['view', 'id'=>$articol->noutati_id], ['class' => 'btn btn-info '])?></div>
+                        <div class="panel-footer"><?= Html::a("Detalii", ['view', 'id'=>$articol->noutati_id], ['class' => 'btn btn-info '])?></div>
                     </div>
 
-                </div>
+                
 
             <?php } ?>
 
         </div>
 
     </div>
-</div>
+
