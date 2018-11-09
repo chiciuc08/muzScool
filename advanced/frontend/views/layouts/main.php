@@ -34,7 +34,7 @@ AppAsset::register($this);
     <ul class="nav navbar-nav">
       <li class="active"><?= Html::a('Activitati', ['/noutati/index'], ['class' => ''])?></li>
       <li class="active"><?= Html::a('Istoric', ['/site/about'], ['class' => ''])?></li>
-      <li class="active"><?= Html::a('Galerie', ['/site/galerie'], ['class' => ''])?></li>
+      <li class="active"><?= Html::a('Galerie', ['/imagini/index'], ['class' => ''])?></li>
       <li class="active"><?= Html::a('Video', ['/site/video'], ['class' => ''])?></li>
       <li class="active"><?= Html::a('Contact', ['/site/contact'], ['class' => ''])?></li>
       <li class="active"><?php if (!Yii::$app->user->isGuest){echo Html::a('Note', ['/nota/index'], ['class' => '']);}?></li>
