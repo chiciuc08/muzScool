@@ -4,11 +4,12 @@ namespace frontend\controllers;
 
 use Yii;
 use app\models\Imagini;
-use yii\data\ActiveDataProvider;
+use app\models\UploadForm;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 /**
  * ImaginiController implements the CRUD actions for Imagini model.
  */
@@ -20,10 +21,21 @@ class ImaginiController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create','update'],
+                'rules' => [
+                    [
+                        'actions' => ['create','update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
@@ -35,12 +47,10 @@ class ImaginiController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Imagini::find(),
-        ]);
+        $listaImagini = Imagini::find()->orderBy("updated_at desc")->all();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'listaImagini' => $listaImagini,
         ]);
     }
 
@@ -64,10 +74,22 @@ class ImaginiController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Imagini();
+        $model = new UploadForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->imagini_id]);
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                $modelImagine = new Imagini();
+                $modelImagine->imagini_nume = $model->imageFile->name;
+                $modelImagine->flPublic = 0;
+                $modelImagine->createdBy = (string)Yii::$app->user->identity->id;
+                $modelImagine->updatedBy =(string) Yii::$app->user->identity->id;
+                $modelImagine->created_at = date('Y-m-d H:i:s');
+                $modelImagine->updated_at = date('Y-m-d H:i:s');
+                if($modelImagine->save()){
+                 return $this->actionIndex();
+                }
+            }
         }
 
         return $this->render('create', [

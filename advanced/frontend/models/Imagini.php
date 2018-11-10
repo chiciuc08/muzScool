@@ -31,12 +31,11 @@ class Imagini extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['imagini_nume', 'imagini_adresa', 'createdBy', 'created_at', 'updatedBy', 'updated_at'], 'required'],
+            [['imagini_nume', 'flPublic', 'createdBy', 'created_at', 'updatedBy', 'updated_at'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            [['imagini_nume', 'imagini_adresa'], 'string', 'max' => 255],
+            [['imagini_nume'], 'string', 'max' => 255],
             [['createdBy', 'updatedBy'], 'string', 'max' => 11],
             [['imagini_nume'], 'unique'],
-            [['imagini_adresa'], 'unique'],
         ];
     }
 
@@ -48,7 +47,7 @@ class Imagini extends \yii\db\ActiveRecord
         return [
             'imagini_id' => 'Imagini ID',
             'imagini_nume' => 'Imagini Nume',
-            'imagini_adresa' => 'Imagini Adresa',
+            'flPublic' => 'Arata in Galerie',
             'createdBy' => 'Created By',
             'created_at' => 'Created At',
             'updatedBy' => 'Updated By',

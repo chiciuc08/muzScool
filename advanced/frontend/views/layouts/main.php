@@ -27,46 +27,46 @@ AppAsset::register($this);
 <div class="wrap">
     
     <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><?= Html::a('Activitati', ['/noutati/index'], ['class' => ''])?></li>
+          <li class="active"><?= Html::a('Istoric', ['/site/about'], ['class' => ''])?></li>
+          <li class="active"><?= Html::a('Galerie', ['/imagini/index'], ['class' => ''])?></li>
+          <li class="active"><?= Html::a('Video', ['/site/video'], ['class' => ''])?></li>
+          <li class="active"><?= Html::a('Contact', ['/site/contact'], ['class' => ''])?></li>
+          <li class="active"><?php if (!Yii::$app->user->isGuest){echo Html::a('Note', ['/nota/index'], ['class' => '']);}?></li>
+          <li class="active"><?php if (!Yii::$app->user->isGuest){echo  Html::a('Orar', ['/ora/index'], ['class' => '']);}?></li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <?php 
+            if (Yii::$app->user->isGuest) {?>
+                <li><?= Html::a('<span class="glyphicon glyphicon-user"></span> Sign Up', ['/site/signup'], ['class' => ''])?></li>
+                <li><?= Html::a('<span class="glyphicon glyphicon-log-in"></span> Login', ['/site/login'], ['class' => ''])?></li>
+             <?php           
+            }else{?>
+                <li>
+                   <?php echo Html::beginForm(['/site/logout'], 'post').
+                        '<button type="submit" class="btn btn-link logout">Iesi&nbsp;'.Yii::$app->user->identity->username.'</button>'
+                           .Html::endForm()?>
+                </li>
+                <?php
+               }
+          ?>
+        </ul>
+      </div>
+    </nav>    
+    <div class="row">
+        <div class="col-md-10 col-md-push-1">
+            <?=Html::img (Yii::$app->request->baseUrl."/imagini/dreamstime.jpg",['class' => 'img-responsive'])?>
+        </div>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><?= Html::a('Activitati', ['/noutati/index'], ['class' => ''])?></li>
-      <li class="active"><?= Html::a('Istoric', ['/site/about'], ['class' => ''])?></li>
-      <li class="active"><?= Html::a('Galerie', ['/imagini/index'], ['class' => ''])?></li>
-      <li class="active"><?= Html::a('Video', ['/site/video'], ['class' => ''])?></li>
-      <li class="active"><?= Html::a('Contact', ['/site/contact'], ['class' => ''])?></li>
-      <li class="active"><?php if (!Yii::$app->user->isGuest){echo Html::a('Note', ['/nota/index'], ['class' => '']);}?></li>
-      <li class="active"><?php if (!Yii::$app->user->isGuest){echo  Html::a('Orar', ['/ora/index'], ['class' => '']);}?></li>
-      
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-        <?php 
-        if (Yii::$app->user->isGuest) {?>
-            <li><?= Html::a('<span class="glyphicon glyphicon-user"></span> Sign Up', ['/site/signup'], ['class' => ''])?></li>
-            <li><?= Html::a('<span class="glyphicon glyphicon-log-in"></span> Login', ['/site/login'], ['class' => ''])?></li>
-         <?php           
-        }else{?>
-            <li>
-               <?php echo Html::beginForm(['/site/logout'], 'post').
-                    '<button type="submit" class="btn btn-link logout">Iesi&nbsp;'.Yii::$app->user->identity->username.'</button>'
-                       .Html::endForm()?>
-                       
-            </li>
-            <?php
-           }
-      ?>
-      
-    </ul>
-  </div>
-</nav>    
-    
     <div class="container">
         <div class="well well-lg">
-        <!--<img src="http://safiisanatos.ro/wp-content/uploads/2014/05/baroc.jpg" />-->
-      
-        <?= $content ?>
+            <?= $content ?>
         </div>
     </div>
 </div>

@@ -20,32 +20,7 @@ class NoutatiController extends Controller
      */
     public function behaviors()
     {
-//        return [
-//             'access' => [
-//                'class' => AccessControl::className(),
-//                'rules' => [
-//                    
-//                                'allow' => true,
-//                                'actions' => ['index', 'view'],
-//                                'roles' => ['?'],
-//                            ],
-//                            [
-//                                'allow' => true,
-//                                'actions' => ['create','update'],
-//                                'roles' => ['@'],
-//                            ],
-//                        ],
-//                    'verbs' => [
-//                        'class' => VerbFilter::className(),
-//                        'actions' => [
-//                            'delete' => ['POST'],
-//
-//                        ],
-//
-//                    ],
-//                ];
-        
-        return [
+     return [
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['create','update'],
