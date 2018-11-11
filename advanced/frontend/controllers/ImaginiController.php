@@ -23,10 +23,10 @@ class ImaginiController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create','update'],
+                'only' => ['create'],
                 'rules' => [
                     [
-                        'actions' => ['create','update'],
+                        'actions' => ['create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -54,20 +54,7 @@ class ImaginiController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Imagini model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
+     /**
      * Creates a new Imagini model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -96,27 +83,7 @@ class ImaginiController extends Controller
             'model' => $model,
         ]);
     }
-
-    /**
-     * Updates an existing Imagini model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->imagini_id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
+    
     /**
      * Deletes an existing Imagini model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -124,9 +91,11 @@ class ImaginiController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $imagine_nume)
     {
         $this->findModel($id)->delete();
+        
+        unlink(Yii::$app->basePath . '/web/imagini/' . $imagine_nume);
 
         return $this->redirect(['index']);
     }
